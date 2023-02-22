@@ -1,0 +1,55 @@
+# source defender install (paid)
+# https://pypi.org/project/sourcedefender/
+# pip install sourcedefender
+
+
+# nano mycode.py
+# print('Hello, from code!')
+
+
+# one terminal
+export SOURCEDEFENDER_PASSWORD="1111"
+export SOURCEDEFENDER_SALT="2222"
+
+sourcedefender encrypt mycode.py
+sourcedefender encrypt mycode.py --password=1111 --salt=2222
+sourcedefender encrypt mycode.py --password=1111 --salt=2222 --ttl=1m
+# with remove source code
+sourcedefender encrypt --remove mycode.py
+
+
+
+# each python code protection file
+import sourcedefender
+from os import environ
+environ["SOURCEDEFENDER_PASSWORD"] = "1111"
+environ["SOURCEDEFENDER_SALT"] = "2222"
+import mycode
+Hello, from code!
+
+
+# run
+python3 -m sourcedefender mycode.pye
+
+
+
+# to deploy converter
+export PYTHON_BIN='/home/shoumitro/Documents/FR/test/pyc_converter/venv/bin/'
+export SOURCEDEFENDER_PASSWORD="1111"
+export SOURCEDEFENDER_SALT="2222"
+python defender_converter.py
+
+
+# for django app
+# need add thses line of code to wsgi.py and manage.py 
+import sourcedefender
+from os import environ
+environ["SOURCEDEFENDER_PASSWORD"] = "1111"
+environ["SOURCEDEFENDER_SALT"] = "2222"
+
+1. wsgi.py
+2. manage.py
+
+
+
+

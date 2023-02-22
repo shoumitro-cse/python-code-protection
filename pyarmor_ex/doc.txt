@@ -1,0 +1,24 @@
+# only for python 3.10.8
+https://towardsdatascience.com/how-to-hide-encrypt-obfuscate-any-python-program-51beea81571f
+https://pyarmor.readthedocs.io/en/latest/project.html
+https://betterprogramming.pub/how-to-obfuscate-python-scripts-with-pyarmor-7b7d45efaf76
+
+
+pip3 install pyarmor # pip/pip3
+
+pyarmor obfuscate --restrict=0 utils.py
+
+cd dist
+python
+from utils import inference
+
+# to build whole project
+pyarmor init
+pyarmor info
+pyarmor build
+
+
+pip install pyinstaller
+pyarmor pack -e " --onefile --icon=logo.ico --add-data /home/shoumitro/Documents/FR/test/pyc_converter/als_social_pyamor/" 
+
+ pyarmor pack msg_brocker_conn.py 

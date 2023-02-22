@@ -1,0 +1,64 @@
+# https://www.geeksforgeeks.org/generate-byte-code-file-python/
+
+python -m py_compile  manage.py
+
+python manage.cpython-310.pyc runserver
+python -m py_compile -
+file.py
+
+
+cd movies/
+python -m compileall
+
+
+
+for path, curr_dir, files in os.walk("."):
+	for file in files:
+		print(os.path.join(path, file))
+		
+
+
+exclude = set(['venv', '.git', '.idea', 'py_code'])
+for root, dirs, files in os.walk('.', topdown=True):
+    dirs[:] = [d for d in dirs if d not in exclude]
+    print(dirs)
+
+    
+import os.path
+
+# get current dir
+os.getcwd()
+
+exclude = set(['venv', '.gitignore', 'db.sqlite3', 'doc.txt', 'README.md', 'LICENSE', 'manage.pyc', 'py_code', '.idea', '.git'])  
+dir_list = os.listdir('.')
+dir_list[:] = [d for d in dir_list if d not in exclude]
+
+for file in dir_list:
+	print(file.endswith(".py")) # true/false
+	print(file.endswith("__pycache__")) # true/false
+	path = os.path.join(os.getcwd(), file)
+	isdir = os.path.isdir(path)
+	isfile = os.path.isfile(path)
+	print(isdir, isfile)
+
+
+os.rename('a.txt', 'b.kml')
+	
+	
+# Add this 2 line of code to prevent decompile (not works)
+# import sys
+# sys.modules['inspect'] = None
+
+
+# pip install uncompyle6
+uncompyle6 manage.pyc > manage.py
+
+
+/home/shoumitro/Documents/FR/social_backend/venv/bin/python -m py_compile  manage.py
+cd __pycache__/
+/home/shoumitro/Documents/FR/social_backend/venv/bin/uncompyle6 manage.cpython-38.pyc > manage_d.py
+cd ..
+
+
+pip install cython
+

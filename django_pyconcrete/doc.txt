@@ -1,0 +1,60 @@
+# it will have support Python 3.10.8 but 3.11 can't
+
+# https://github.com/Falldog/pyconcrete/tree/master/example/django
+
+# Python 3.10.8
+source venv/bin/activate
+PYCONCRETE_PASSPHRASE=1111 pip install pyconcrete
+
+pyconcrete-admin.py compile --source=/home/shoumitro/Documents/FR/test/pyc_converter/als_social_encrp --pye --remove-py --remove-pyc -i wsgi.py manage.py
+
+
+# need add import 
+import pyconcrete
+1. wsgi.py
+2. manage.py
+
+python manage.py runserver
+
+
+
+
+
+# pyconcrete for source protection (Python 3.10.8)
+https://github.com/Falldog/pyconcrete
+PYCONCRETE_PASSPHRASE=<your passphrase here> pip install pyconcrete
+pip install pyconcrete --egg --install-option="--passphrase=1111"
+PYCONCRETE_PASSPHRASE=1111 pip install pyconcrete
+
+
+pyconcrete-admin.py compile --source=<your py script>  --pye
+pyconcrete-admin.py compile --source=<your py module dir> --pye
+
+pyconcrete-admin.py compile --source=/code/ --pye --remove-py --remove-pyc -i wsgi.py manage.py
+pyconcrete-admin.py compile --source=/home/shoumitro/Documents/FR/test/pyc_converter/als_social_encrp --pye --remove-py --remove-pyc -i wsgi.py manage.py
+
+
+# need add import pyconcrete
+
+import pyconcrete
+1. wsgi.py
+2. manage.py
+
+
+
+
+
+Protect python script work flow
+your_script.py import pyconcrete
+pyconcrete will hook import module
+when your script do import MODULE, pyconcrete import hook will try to find MODULE.pye first and then decrypt MODULE.pye via _pyconcrete.pyd and execute decrypted data (as .pyc content)
+encrypt & decrypt secret key record in _pyconcrete.pyd (like DLL or SO) the secret key would be hide in binary code, can't see it directly in HEX view
+
+
+Encryption
+only support AES 128 bit now
+encrypt & decrypt by library OpenAES
+
+
+
+
